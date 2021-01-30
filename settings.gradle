@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "NotApp (A notes taking app)"
