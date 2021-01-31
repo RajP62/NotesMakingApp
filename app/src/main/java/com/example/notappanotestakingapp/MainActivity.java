@@ -24,39 +24,31 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialisingViewsAndListeners();
-        PerformingInBackground();
+        SharedPreferences getShared = getSharedPreferences("SharedData", MODE_PRIVATE);
+        String recentData = getShared.getString("Str", "Please enter the text");
+        tvMainDataDisplay.setText(recentData);
     }
 
     private void initialisingViewsAndListeners() {
         etEnterData = findViewById(R.id.et_EnterData);
         btnMakeNote = findViewById(R.id.btn_makeNote);
         tvMainDataDisplay = findViewById(R.id.Main_tvDisplayNotes);
-    }
-
-    private void PerformingInBackground() {
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
-            SharedPreferences getShared = getSharedPreferences("SharedData", MODE_PRIVATE);
-            String recentData = getShared.getString("Str", "Please enter the text");
-            tvMainDataDisplay.setText(recentData);
-            btnMakeNote.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    executorService.execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (etEnterData.getText().toString().length()!= 0) {
-                                String Data = etEnterData.getText().toString();
-                                SharedPreferences sharedPreferences = getSharedPreferences("SharedData", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("Str", Data);
-                                editor.apply();
-                                tvMainDataDisplay.setText(Data);
-                                etEnterData.getText().clear();
-                            }
-
-                        }
-                    });
+        btnMakeNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (etEnterData.getText().toString().length() != 0) {
+                    String Data = etEnterData.getText().toString();
+                    SharedPreferences sharedPreferences = getSharedPreferences("SharedData", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("Str", Data);
+                    editor.apply();
+                    tvMainDataDisplay.setText(Data);
+                    etEnterData.getText().clear();
                 }
-            });
-        }
+            }
+
+        });
+
     }
+}
+

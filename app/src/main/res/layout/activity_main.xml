@@ -27,28 +27,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_NoteApp"/>
 
-    <TextView
-        android:id="@+id/Main_tvDisplayNotes"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/BlankTv_BelowNoteApp" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_NoteApp">
 
+        <TextView
+            android:id="@+id/Main_tvDisplayNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:textColor="@color/black"
+            android:textIsSelectable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BlankTv_BelowNoteApp" />
+
+    </ScrollView>
 
     <Button
         android:id="@+id/btn_makeNote"
-        android:textStyle="bold"
-        android:textColor="@color/purple_700"
-        android:background="@color/white"
         android:layout_width="wrap_content"
-        android:layout_marginBottom="@dimen/dp_10"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="@drawable/curvedrectangle_forbutton"
+        android:fontFamily="@font/akronim"
         android:text="@string/txt_makeNote"
+        android:textColor="@color/purple_700"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -66,6 +74,6 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_makeNote"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints=""
-        android:inputType="none" />
+        android:inputType="text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
