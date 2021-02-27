@@ -3,4 +3,6 @@
     <string name="txt_makeNote">Make Note</string>
     <string name="txt_enter_the_text">Enter the text</string>
     <string name="txt_notApp">NotApp</string>
+    <string name="makenewtask_txt">MakeNewTask</string>
+    <string name="schedule_next_day_txt">Schedule Next Day</string>
 </resources>
